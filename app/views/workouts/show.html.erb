@@ -1,0 +1,9 @@
+<br>
+<%= link_to "Workouts", "/users/show" %>
+<br>
+Exercises
+<ul>
+  <% @workout_exercises.each do |exercise| %>
+  <li><%= exercise.name %></li>
+  <% end %>
+</ul>

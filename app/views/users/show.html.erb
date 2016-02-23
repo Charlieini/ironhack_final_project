@@ -1,0 +1,7 @@
+Workouts!
+<br>
+<ul>
+  <% @workouts.each do |workout| %>
+  <li><%= link_to "#{workout.name} #{workout.date}", "/workouts/#{workout.id}" %></li>
+  <% end %>
+</ul>

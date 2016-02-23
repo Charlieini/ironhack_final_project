@@ -1,0 +1,16 @@
+<%= form_for @workout do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :date %>
+  <%= f.date_field :date %>
+  <br>
+  <%= f.label :user_id %>
+  <%= f.collection_select :user_id, @trained_users,:id,:name, include_blank: true %>
+
+  <%= f.hidden_field :trainer_id, :value => current_trainer.id %>
+  <br>
+  <%= f.submit 'Create Workout'%>
+
+<%end%>
