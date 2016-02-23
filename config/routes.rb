@@ -10,8 +10,10 @@ Rails.application.routes.draw do
   get '/workouts/:workout_id' => 'workouts#show'
   get '/trainers/:trainer_id' => 'trainers#show'
 
-  resources :workouts
   resources :exercises
+  resources :workouts do
+    resources :comments, only: [:create, :new]
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

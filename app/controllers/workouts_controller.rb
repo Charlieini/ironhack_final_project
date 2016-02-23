@@ -1,7 +1,8 @@
 class WorkoutsController < ApplicationController
 
   def show
-    @workout_exercises = Exercise.where("workout_id= ?", params[:workout_id])
+    @workout= Workout.find(params[:workout_id])
+    @comment = @workout.comments.new params[:comment]
   end
 
   def new

@@ -3,7 +3,18 @@
 <br>
 Exercises
 <ul>
-  <% @workout_exercises.each do |exercise| %>
+  <% @workout.exercises.each do |exercise| %>
   <li><%= exercise.name %></li>
   <% end %>
 </ul>
+
+<%= form_for [@workout,@comment], url: workout_comments_path(@workout), method: "post" do |f| %>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  <%= f.hidden_field :workout_id, :value => @workout.id %>
+
+  <br>
+
+  <%= f.submit 'Add comment'%>
+
+<%end%>

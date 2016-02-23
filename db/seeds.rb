@@ -24,8 +24,13 @@ User.create! name: "Pablo", email: "pablo@user.com", password: "12345678", passw
 User.create! name: "Ramon", email: "moncho@user.com", password: "12345678", password_confirmation: "12345678"
 
 Workout.create! name: "run", date: Date.new(2016,10,15), trainer_id: 1, user_id: 1
+Workout.create! name: "swim", date: Date.new(2016,3,1), trainer_id: 1, user_id: 1
 
 Exercise.create! name: "easy run", kind: "running", duration: "20 mintues", pace: "5 - 5:30 min/km", workout_id: 1
+Exercise.create! name: "easy swim", kind: "swiming", duration: "20 mintues", pace: "5 - 5:30 min/km", workout_id: 2
+Exercise.create! name: "easy run", kind: "running", duration: "20 mintues", pace: "5 - 5:30 min/km", workout_id: 1
+Exercise.create! name: "easy run", kind: "running", duration: "20 mintues", pace: "5 - 5:30 min/km", workout_id: 1
+
 
 Users_trainer.create! user_id: 1, trainer_id: 1
 Users_trainer.create! user_id: 2, trainer_id: 1
