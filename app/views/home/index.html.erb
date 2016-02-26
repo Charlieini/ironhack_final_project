@@ -1,8 +1,18 @@
-<h1><%= current_user ? current_user.id  : "Not logged" %></h1>
 
-
-<%= form_tag("/search", method: "get") do %>
-  <%= label_tag(:q, "Search for:") %>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Search") %>
-<% end %>
+  <div id="header">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<h1>Search your best personal trainer</h1>
+					<h2 class="subtitle">No pain no gain</h2>
+          <%= form_tag("/search", method: "get") do %>
+          <%= label_tag(:q, "Search for:") %>
+          <%= text_field_tag :q %>
+          <%= submit_tag "Search", class: "button" %>
+          <% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+  <%= render "home/login_modal" %>
+  <%= render "home/sign_up_modal" %>

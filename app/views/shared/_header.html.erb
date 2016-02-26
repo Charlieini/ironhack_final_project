@@ -1,8 +1,18 @@
-
-<header>
-<%= link_to "home", "/" %>
-<%= link_to "Sign up", "/users/sign_up" %>
-<%= link_to "Log in", "/users/sign_in" %>
-<%= link_to "Log out", "/users/sign_out", :method => :delete %>
-<%= link_to "My profile", "/users/show" %>
-</header>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Sportify</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+        <li><%= link_to "Log out", "/users/sign_out", :method => :delete %></li>
+        <li><%= link_to "My profile", "/users/show" %></li>
+        <% else %>
+        <li><%= link_to "Sign up", "#sign_up", "data-toggle" => "modal" %></li>
+        <li><%= link_to "Login", "#login", "data-toggle" => "modal"%></li>
+        <%end%>
+      </ul>
+    </div>
+  </div>
+</div>
