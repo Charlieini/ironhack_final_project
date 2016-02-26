@@ -37,7 +37,7 @@
   <%= f.label :distance  %>
   <%= f.number_field :distance %>
   <br>
-  <%= f.hidden_field :trainer_id, :value => current_trainer.id %>
+  <%= f.hidden_field :trainer_id, :value => current_user.id %>
   <%= f.hidden_field :workout_id, :value => params[:id] %>
 
   <%= f.submit 'Add exercise'%>

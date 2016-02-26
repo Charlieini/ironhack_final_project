@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   devise_for :users
   post '/rate' => 'rater#create', :as => 'rate'
   get '/' => 'home#index'
-  get '/search' => 'trainers#index'
+  get '/search' => 'users#index'
   get '/users/show' => 'users#show'
   get '/workout/new' => 'workouts#new'
-  get '/trainers/inspect/:user_id' => 'trainers#inspect_user_workouts'
+  get '/trainers/inspect/:user_id' => 'users#inspect_user_workouts'
   get '/workouts/:workout_id' => 'workouts#show'
   get '/trainers/:trainer_id' => 'trainers#show'
 
