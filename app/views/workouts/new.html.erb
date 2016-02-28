@@ -4,12 +4,15 @@
   <%= f.text_field :name %>
   <br>
   <%= f.label :date %>
-  <%= f.date_field :date %>
+  <%= f.date_field :start_time %>
   <br>
   <%= f.label :user_id %>
   <%= f.collection_select :user_id, @trained_users,:id,:name, include_blank: true %>
+  <br>
+  <%= f.label :sport_id %>
+  <%= f.collection_select :sport_id, Sport.all, :id,:name %>
 
-  <%= f.hidden_field :trainer_id, :value => current_trainer.id %>
+  <%= f.hidden_field :trainer_id, :value => current_user.id %>
   <br>
   <%= f.submit 'Create Workout'%>
 

@@ -1,39 +1,26 @@
-<div class="modal" id="login">
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    	  <div class="modal-dialog">
+				<div class="loginmodal-container">
+					<h1>Login to Your Account</h1><br>
+            <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 
-  <div class="modal-header">
+              <div><%= f.label :email %><br>
 
-    <button class="close" data-dismiss="modal">x</button>
+              <%= f.email_field :email, :autofocus => true %></div>
 
-    <h2>Sign in</h2>
+              <div><%= f.label :password %><br>
 
-</div>
+              <%= f.password_field :password %></div>
 
-<div class="modal-body">
+              <% if devise_mapping.rememberable? -%>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+                <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
 
-  <div><%= f.label :email %><br />
+            <% end -%>
 
-  <%= f.email_field :email, :autofocus => true %></div>
+            <%= f.submit "Sign in", :class => 'btn btn-small btn-success' %>
+            <% end %>
 
-  <div><%= f.label :password %><br />
-
-  <%= f.password_field :password %></div>
-
-  <% if devise_mapping.rememberable? -%>
-
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-
-  <% end -%>
-
-  <%= f.submit "Sign in", :class => 'btn btn-small btn-success' %>
-  <% end %>
-
-  </div>
-
-  <div class="modal-footer">
-
-
-</div>
-
+				</div>
+			  </div>
 </div>

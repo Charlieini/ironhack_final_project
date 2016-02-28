@@ -1,7 +1,22 @@
-Workouts!
+<h1><%= User.find(@workouts[0].user_id).name %></h1>
 <br>
 <ul>
   <% @workouts.each do |workout| %>
-  <li><%= link_to "#{workout.name} #{workout.date}", "/workouts/#{workout.id}/edit" %></li>
+  <li><%= link_to "#{workout.name} #{workout.start_time}", "/workouts/#{workout.id}/edit" %></li>
   <% end %>
+</ul>
+<ul>
+  <% if @workouts.length > 0 %>
+    <%= month_calendar events: @workouts do |date, workouts| %>
+    <%= date.day %>
+      <% workouts.each do |workout| %>
+      <div>
+        <% sport_name = Sport.find(workout.sport_id).name %>
+        <a href="/workouts/<%="#{workout.id}/edit"%>">
+        <%= image_tag("#{sport_name}.png") %>
+      </a>
+      </div>
+      <%end%>
+    <%end%>
+  <%end%>
 </ul>

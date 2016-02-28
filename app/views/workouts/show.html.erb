@@ -1,16 +1,18 @@
+
 <br>
 <%= link_to "Workouts", "/users/show" %>
 <br>
 Exercises
 <ul>
   <% @workout.exercises.each do |exercise| %>
-  <li><%= exercise.name %></li>
+  <li><%= exercise.name %>  <%= icon('youtube') %></li>
   <% end %>
 </ul>
 
 <%= form_for [@workout,@comment], url: workout_comments_path(@workout), method: "post" do |f| %>
-  <%= f.label :content %>
-  <%= f.text_field :content %>
+  <%= f.label :comment %>
+  <br>
+  <%= f.text_area :content, :id => 'wysihtml5-textarea' %>
   <%= f.hidden_field :workout_id, :value => @workout.id %>
 
   <br>

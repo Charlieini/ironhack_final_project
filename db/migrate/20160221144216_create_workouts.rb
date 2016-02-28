@@ -2,7 +2,7 @@ class CreateWorkouts < ActiveRecord::Migration
   def change
     create_table :workouts do |t|
       t.string :name
-      t.datetime :date
+      t.datetime :start_time
       t.integer :rating
       t.references :trainer, index: true
       t.references :user, index: true

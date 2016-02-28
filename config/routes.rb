@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :trainers
   devise_for :users
-  post '/rate' => 'rater#create', :as => 'rate'
+  
   get '/' => 'home#index'
   get '/search' => 'users#index'
   get '/users/show' => 'users#show'

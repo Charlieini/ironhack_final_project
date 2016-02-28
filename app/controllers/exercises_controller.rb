@@ -8,8 +8,8 @@ class ExercisesController < ApplicationController
   def create
     @exercise = Exercise.new exercise_params
     if @exercise.save
-      flash[:notice] = "Workout created!"
-      redirect_to "/workouts/1/edit"
+      flash[:notice] = "Exercise created!"
+      redirect_to "/workouts/#{@exercise.workout_id}/edit"
     else
       flash[:alert] = "Workout not saved"
       redirect_to "/home"

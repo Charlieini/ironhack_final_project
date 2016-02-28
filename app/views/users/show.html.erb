@@ -1,21 +1,49 @@
-Workouts!
+<h1>Welcome <%= current_user.name%>!</h1>
 <br>
 <ul>
-  <% @workouts.each do |workout| %>
-  <li><%= link_to "#{workout.name} #{workout.date}", "/workouts/#{workout.id}" %></li>
-  <% end %>
-</ul>
-<% if current_user.has_role? :trainer %>
-Trained Users!
-<ul>
-  <% @trained_users.each do |user| %>
-  <li>Username: <%= link_to(user.name, "/trainers/inspect/#{user.id}") %> | Email: <%= user.email %></li>
-  <% end %>
-</ul>
-Workouts!
-<ul>
-  <% @workouts_as_trainer.each do |workout| %>
-  <li><%= workout.name %> <%= User.find(workout.user_id).name%></li>
+  <% if @workouts.length > 0 %>
+    <%= month_calendar events: @workouts do |date, workouts| %>
+    <%= date.day %>
+      <% workouts.each do |workout| %>
+      <div>
+        <% sport_name = Sport.find(workout.sport_id).name %>
+        <a href="/workouts/<%="#{workout.id}"%>" data-toggle="modal" data-target="#myModal" data-remote="false">
+        <%= image_tag("#{sport_name}.png") %>
+      </a>
+      </div>
+      <%end%>
+    <%end%>
   <%end%>
 </ul>
-<%end%>
+
+<% if current_user.has_role? :trainer %>
+
+<h2>Trained users</h2>
+<p>The following are the users you are training:</p>
+
+<table id="trained_users">
+  <tr>
+    <th>User</th>
+    <th>Photo</th>
+    <th>Training accomplished</th>
+  </tr>
+  <% @trained_users.each do |user| %>
+  <tr class="trained_user clickable-row" data-href="/trainers/inspect/<%=user.id%>">
+      <td><%= user.name %> </td>
+      <td><%= user.id %></td>
+      <td><%= user.email %></td>
+  </tr>
+  <%end%>
+</table>
+
+<%= link_to "Create workout", "/workout/new" %>
+<% end %>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      </div>
+    </div>
+  </div>
+</div>

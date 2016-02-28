@@ -23,15 +23,31 @@ User.create! name: "Ramon", email: "moncho@user.com", password: "12345678", pass
 (User.create! name: "Mary", email: "mary@sport.com", password: "12345678", password_confirmation: "12345678").add_role :trainer
 (User.create! name: "Lucy", email: "lucy@sport.com", password: "12345678", password_confirmation: "12345678").add_role :trainer
 
-Workout.create! name: "run", date: Date.new(2016,10,15), trainer_id: 9, user_id: 1
-Workout.create! name: "swim", date: Date.new(2016,3,1), trainer_id: 9, user_id: 1
+Workout.create! name: "run", start_time: Date.new(2016,10,15), trainer_id: 9, user_id: 1, sport_id: 1
+Workout.create! name: "swim", start_time: Date.new(2016,3,1), trainer_id: 9, user_id: 1, sport_id: 2
+Workout.create! name: "tri", start_time: Date.new(2016,3,2), trainer_id: 10, user_id: 9, sport_id: 5
+Workout.create! name: "gym", start_time: Date.new(2016,3,3), trainer_id: 10, user_id: 9, sport_id: 4
+Workout.create! name: "run", start_time: Date.new(2016,3,4), trainer_id: 10, user_id: 9, sport_id: 1
 
-Exercise.create! name: "easy run", kind: "running", duration: "20 mintues", pace: "5 - 5:30 min/km", workout_id: 1
-Exercise.create! name: "easy swim", kind: "swiming", duration: "20 mintues", pace: "5 - 5:30 min/km", workout_id: 2
-Exercise.create! name: "easy run", kind: "running", duration: "20 mintues", pace: "5 - 5:30 min/km", workout_id: 1
-Exercise.create! name: "easy run", kind: "running", duration: "20 mintues", pace: "5 - 5:30 min/km", workout_id: 1
+
+Exercise.create! name: "easy run", explanation: "10 min at 6:30 min/km", workout_id: 1
+Exercise.create! name: "easy swim", explanation: "20 min easy pace", workout_id: 2
+Exercise.create! name: "easy run", explanation: "15 min at 6:00 min/km", workout_id: 1
+Exercise.create! name: "easy run", explanation: "10 min at 7:00 min/km", workout_id: 1
+Exercise.create! name: "bike", explanation: "2 hours social workout", workout_id: 3
+Exercise.create! name: "easy swim", explanation: "relax on the swiming pool",  workout_id: 3
+Exercise.create! name: "gym", explanation: "Do this this this and this", workout_id: 4
+Exercise.create! name: "running faster", explanation: "5 x 3km series", workout_id: 5
 
 
 Users_trainer.create! user_id: 1, trainer_id: 9
 Users_trainer.create! user_id: 2, trainer_id: 9
 Users_trainer.create! user_id: 3, trainer_id: 9
+
+Sport.create! name: "run"
+Sport.create! name: "swim"
+Sport.create! name: "bike"
+Sport.create! name: "gym"
+Sport.create! name: "triathlon"
+Sport.create! name: "fencing"
+Sport.create! name: "other"

@@ -46,6 +46,8 @@ GEM
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bootstrap-wysihtml5-rails (0.3.3.8)
+      railties (>= 3.0)
     builder (3.2.2)
     byebug (8.2.2)
     cancancan (1.13.1)
@@ -69,6 +71,8 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.6.0)
+    font-awesome-sass (4.5.0)
+      sass (>= 3.2)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
@@ -152,6 +156,8 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    simple_calendar (2.0.6)
+      rails (>= 3.0)
     slop (3.6.0)
     spring (1.6.3)
     sprockets (3.5.2)
@@ -185,10 +191,12 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass
+  bootstrap-wysihtml5-rails
   byebug
   cancancan (~> 1.10)
   coffee-rails (~> 4.1.0)
   devise
+  font-awesome-sass
   jbuilder (~> 2.0)
   jquery-rails
   pry
@@ -197,6 +205,7 @@ DEPENDENCIES
   rspec
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  simple_calendar
   spring
   sqlite3
   turbolinks

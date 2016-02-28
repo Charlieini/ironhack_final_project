@@ -4,7 +4,10 @@
   <%= f.text_field :name %>
   <br>
   <%= f.label :date %>
-  <%= f.date_field :date %>
+  <%= f.date_field :start_time %>
+  <br>
+  <%= f.label :sport_id %>
+  <%= f.collection_select :sport_id, Sport.all, :id,:name %>
   <br>
   <%= f.submit 'Edit Workout'%>
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226110853) do
+ActiveRecord::Schema.define(version: 20160227185221) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -24,14 +24,11 @@ ActiveRecord::Schema.define(version: 20160226110853) do
 
   create_table "exercises", force: :cascade do |t|
     t.string   "name"
-    t.string   "kind"
-    t.string   "duration"
-    t.string   "pace"
-    t.string   "distance"
+    t.string   "explanation"
     t.integer  "workout_id"
     t.integer  "trainer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "exercises", ["trainer_id"], name: "index_exercises_on_trainer_id"
@@ -47,6 +44,12 @@ ActiveRecord::Schema.define(version: 20160226110853) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], name: "index_roles_on_name"
+
+  create_table "sports", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "trainers", force: :cascade do |t|
     t.string   "name"
@@ -105,14 +108,16 @@ ActiveRecord::Schema.define(version: 20160226110853) do
 
   create_table "workouts", force: :cascade do |t|
     t.string   "name"
-    t.datetime "date"
+    t.datetime "start_time"
     t.integer  "rating"
     t.integer  "trainer_id"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "sport_id"
   end
 
+  add_index "workouts", ["sport_id"], name: "index_workouts_on_sport_id"
   add_index "workouts", ["trainer_id"], name: "index_workouts_on_trainer_id"
   add_index "workouts", ["user_id"], name: "index_workouts_on_user_id"
 

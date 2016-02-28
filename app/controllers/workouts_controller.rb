@@ -10,7 +10,7 @@ class WorkoutsController < ApplicationController
     @workout = Workout.new
     @trained_users = []
     ids = []
-    fetch_user_id = Users_trainer.where("trainer_id= ?", current_trainer.id)
+    fetch_user_id = Users_trainer.where("trainer_id= ?", current_user.id)
     fetch_user_id.each {|user| ids << user.user_id }
     ids.each {|id| @trained_users << User.find(id)}
   end
@@ -19,7 +19,7 @@ class WorkoutsController < ApplicationController
     @workout = Workout.new workout_params
       if @workout.save
         flash[:notice] = "Workout created!"
-        redirect_to "/trainers/show"
+        redirect_to "/workouts/#{@workout.id}/edit"
       else
         flash[:alert] = "Workout not saved"
         render "new"
@@ -41,7 +41,7 @@ class WorkoutsController < ApplicationController
   private
 
   def workout_params
-    params.require(:workout).permit(:name, :date, :user_id, :trainer_id)
+    params.require(:workout).permit(:name, :start_time, :user_id, :trainer_id, :sport_id)
   end
 
 end

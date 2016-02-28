@@ -1,3 +1,31 @@
 // Place all the styles related to the trainers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+h1 {
+   text-align: center;
+}
+
+div.img {
+    margin:5px;
+    border: 1px solid #ffA500;
+    float: left;
+    width: 180px;
+}
+
+div.img:hover {
+    border: 1px solid #ff8000; background:#FFA500;
+}
+
+div.img img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+
+.portrait {
+  height: 10em;
+}

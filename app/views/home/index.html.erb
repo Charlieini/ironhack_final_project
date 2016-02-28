@@ -6,13 +6,25 @@
 					<h1>Search your best personal trainer</h1>
 					<h2 class="subtitle">No pain no gain</h2>
           <%= form_tag("/search", method: "get") do %>
-          <%= label_tag(:q, "Search for:") %>
           <%= text_field_tag :q %>
-          <%= submit_tag "Search", class: "button" %>
+          <%= submit_tag "Search", class: "button btn", id: "search_button" %>
           <% end %>
 				</div>
 			</div>
 		</div>
 	</div>
+
+  <textarea id="some-textarea" class='wysihtml5' placeholder="Enter text ..."></textarea>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    $('.wysihtml5').each(function(i, elem) {
+      $(elem).wysihtml5();
+    });
+
+  })
+</script>
+
   <%= render "home/login_modal" %>
   <%= render "home/sign_up_modal" %>

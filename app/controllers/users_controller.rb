@@ -10,7 +10,13 @@ class UsersController < ApplicationController
   end
 
   def index
-    @trainers = User.all
+    @trainers = []
+    all_users = User.all
+    all_users.each do |user|
+      if user.has_role? :trainer
+        @trainers << user
+      end
+    end
   end
 
   def inspect_user_workouts
