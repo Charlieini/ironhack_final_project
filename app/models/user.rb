@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
 
   has_many :users_trainers
   has_many :trainers, through: :users_trainers
+  mount_uploader :avatar, AvatarUploader
 end

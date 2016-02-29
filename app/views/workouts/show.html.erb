@@ -3,11 +3,11 @@
 <%= link_to "Workouts", "/users/show" %>
 <br>
 Exercises
-<ul>
+<div>
   <% @workout.exercises.each do |exercise| %>
-  <li><%= exercise.name %>  <%= icon('youtube') %></li>
+  <div><%= exercise.name %>  <%= icon('youtube') %></div>
   <% end %>
-</ul>
+</div>
 
 <%= form_for [@workout,@comment], url: workout_comments_path(@workout), method: "post" do |f| %>
   <%= f.label :comment %>

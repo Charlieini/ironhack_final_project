@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @comment = @workout.comments.new comment_params
     if @comment.save
       flash[:notice] = "Comment created!"
-      redirect_to workout_path(@workout)
+      redirect_to users_show_path(@workout)
     else
       flash[:alert] = "Comment not saved"
       redirect_to workout_path(@workout)

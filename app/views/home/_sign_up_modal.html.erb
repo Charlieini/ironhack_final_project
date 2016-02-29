@@ -9,7 +9,7 @@
 
           <div><%= f.label :name %><br />
 
-          <%= f.email_field :name %></div>
+          <%= f.text_field :name %></div>
 
           <div><%= f.label :email %><br />
 
@@ -23,6 +23,8 @@
 
           <%= f.password_field :password_confirmation %></div>
 
+          <%= f.label :avatar %>
+          <%= f.file_field :avatar %>
 
           <p><div><%= f.submit "Sign up", :class => 'btn btn-small btn-success' %></div></p>
 
