@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160229114435) do
+ActiveRecord::Schema.define(version: 20160302120615) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -22,15 +22,22 @@ ActiveRecord::Schema.define(version: 20160229114435) do
 
   add_index "comments", ["workout_id"], name: "index_comments_on_workout_id"
 
-  create_table "exercises", force: :cascade do |t|
+  create_table "exercise_types", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "exercises", force: :cascade do |t|
     t.string   "explanation"
     t.integer  "workout_id"
     t.integer  "trainer_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "exercise_type_id"
   end
 
+  add_index "exercises", ["exercise_type_id"], name: "index_exercises_on_exercise_type_id"
   add_index "exercises", ["trainer_id"], name: "index_exercises_on_trainer_id"
   add_index "exercises", ["workout_id"], name: "index_exercises_on_workout_id"
 
@@ -85,6 +92,7 @@ ActiveRecord::Schema.define(version: 20160229114435) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "avatar"
+    t.string   "explanation"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

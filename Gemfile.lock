@@ -195,6 +195,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  binding_of_caller
   bootstrap-sass
   bootstrap-wysihtml5-rails
   byebug

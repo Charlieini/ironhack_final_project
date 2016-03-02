@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def index
     @trainers = []
-    all_users = User.all
+    all_users = User.where("id != ?", current_user.id)
     all_users.each do |user|
       if user.has_role? :trainer
         @trainers << user
@@ -21,6 +21,7 @@ class UsersController < ApplicationController
 
   def inspect_user_workouts
     @workouts = Workout.where("user_id=? and trainer_id=?", params[:user_id], current_user.id)
+    @workout = Workout.new
   end
 
   private

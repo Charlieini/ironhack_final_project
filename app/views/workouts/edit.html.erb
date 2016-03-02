@@ -1,46 +1,28 @@
-<div  class="row">
-  <div class="col-sm-4 workout_form" >
-    <%= form_for @workout do |f| %>
+<h1><%=@workout.start_time.day%>-<%=Date::MONTHNAMES[@workout.start_time.month]%></h1>
+<h1><%= @user.name %></h1>
 
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <br>
-    <%= f.label :date %>
-    <%= f.date_field :start_time %>
-    <br>
-    <%= f.label :sport_id %>
-    <%= f.collection_select :sport_id, Sport.all, :id,:name %>
-    <br>
-    <%= f.submit 'Edit Workout'%>
-
-    <%end%>
-    <ul>
-      <% @workout.exercises.each do |exercise| %>
-      <li><%= exercise.name %>
-        <%= link_to("Edit", edit_exercise_path(exercise)) %>
-        |
-        <%= link_to("Delete", exercise_path(exercise), method: :delete, data: {confirm: "Are you sure?"}) %>
-      </li>
-      <%end%>
-
-    </ul>
+  <% @workout.exercises.each do |exercise| %>
+  <div class="container add_exercises">
+    <div class="col-lg-4 col-sm-6 text-center well">
+        <h4><%=ExerciseType.find(exercise.exercise_type_id).name%> </h4>
+          <p class="ui-state-default"><%= exercise.explanation %></p>
+          <%= link_to("Delete", exercise_path(exercise), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger")%>
+    </div>
   </div>
+  <%end%>
 
 
-    <div class="col-sm-4 workout_form" >
-
+<div class="edit-form">
     <%= form_for @exercise do |f| %>
 
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+      <%= f.label :type %>
+      <%= f.collection_select :exercise_type_id, ExerciseType.all, :id,:name %>
       <br>
-      <%= f.text_area :explanation, :id => 'wysihtml5-textarea' %>
+      <%= f.text_field :explanation %>
       <%= f.hidden_field :trainer_id, :value => current_user.id %>
       <%= f.hidden_field :workout_id, :value => params[:id] %>
       <br>
       <%= f.submit 'Add exercise'%>
 
     <%end%>
-  </div>
-
 </div>

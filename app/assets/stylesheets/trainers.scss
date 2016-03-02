@@ -29,3 +29,29 @@ div.desc {
 .portrait {
   height: 10em;
 }
+
+.address {
+    font-size: 37px;
+    text-decoration: underline;
+    padding-bottom: 10px;
+}
+
+a.list-group-item {
+    height: auto;
+    min-height: 130px;
+}
+
+a.list-group-item:hover, a.list-group-item:focus {
+    border-left:10px solid #FFA500;
+    border-right:10px solid #FFA500;
+}
+
+a.list-group-item {
+    border-left:10px solid transparent;
+    border-right:10px solid transparent;
+}
+
+.avatar {
+  width: 120px;
+  height: 108px;
+}

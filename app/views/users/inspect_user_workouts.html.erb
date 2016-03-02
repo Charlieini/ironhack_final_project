@@ -1,10 +1,6 @@
 <h1><%= User.find(@workouts[0].user_id).name %></h1>
 <br>
-<ul>
-  <% @workouts.each do |workout| %>
-  <li><%= link_to "#{workout.name} #{workout.start_time}", "/workouts/#{workout.id}/edit" %></li>
-  <% end %>
-</ul>
+<button class="btn toogle-create">Create new workout!</button>
 <ul>
   <% if @workouts.length > 0 %>
     <%= month_calendar events: @workouts do |date, workouts| %>
@@ -21,4 +17,19 @@
   <%end%>
 </ul>
 
-<%= link_to "Create workout", "/workout/new" %>
+<div class="create-workout">
+  <%= form_for @workout do |f| %>
+
+    <%= f.label :date %>
+    <%= f.date_field :start_time %>
+
+    <%= f.label :sport_id %>
+    <%= f.collection_select :sport_id, Sport.all, :id,:name %>
+
+    <%= f.hidden_field :user_id, :value => params[:user_id]%>
+    <%= f.hidden_field :trainer_id, :value => current_user.id %>
+
+    <%= f.submit 'Create Workout'%>
+
+  <%end%>
+</div>

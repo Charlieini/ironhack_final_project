@@ -1,14 +1,16 @@
+<h1><%=@workout.start_time.day%>-<%=Date::MONTHNAMES[@workout.start_time.month]%></h1>
+<p><%= @workout.name %> </p>
 
-<br>
-<%= link_to "Workouts", "/users/show" %>
-<br>
-Exercises
-<div>
-  <% @workout.exercises.each do |exercise| %>
-  <div><%= exercise.name %>  <%= icon('youtube') %></div>
-  <% end %>
+<% @workout.exercises.each do |exercise| %>
+<div class="container exercises">
+  <div class="col-lg-4 col-sm-6 text-center well">
+      <h4><%=ExerciseType.find(exercise.exercise_type_id).name%> </h4>
+        <p class="ui-state-default"><%= exercise.explanation %></p>
+  </div>
 </div>
+<%end%>
 
+<h2>How did I do?</h2>
 <%= form_for [@workout,@comment], url: workout_comments_path(@workout), method: "post" do |f| %>
   <%= f.label :comment %>
   <br>

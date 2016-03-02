@@ -29,6 +29,7 @@ class WorkoutsController < ApplicationController
   def edit
     @workout = Workout.find params[:id]
     @exercise = Exercise.new
+    @user = User.find @workout.user_id
   end
 
   def update

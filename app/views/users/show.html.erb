@@ -1,5 +1,36 @@
-<h1>Welcome <%= current_user.name%>!</h1>
-<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-xs-10">
+      <div class="well panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-12 col-sm-4 text-center">
+              <img src="<%= current_user.avatar.url %>" alt="" class="center-block img-circle img-thumbnail img-responsive">
+              <ul class="list-inline ratings text-center" title="Ratings">
+                <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
+                <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
+                <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
+                <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
+                <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
+              </ul>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+              <h2><%=current_user.name%></h2>
+              <p><strong>About: </strong> <%= current_user.explanation %> </p>
+              <p><strong>Hobbies: </strong> Read, out with friends, listen to music, draw and learn new things. </p>
+              <p><strong>Skills: </strong>
+                <span class="label label-info tags">html5</span>
+                <span class="label label-info tags">css3</span>
+                <span class="label label-info tags">jquery</span>
+                <span class="label label-info tags">bootstrap3</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <ul>
   <% if @workouts.length > 0 %>
     <%= month_calendar events: @workouts do |date, workouts| %>
